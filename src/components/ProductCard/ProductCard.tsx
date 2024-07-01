@@ -1,6 +1,12 @@
 import './ProductCard.css'
 
-export default function ProductCard({name, price}) {
+interface ProductCardProps {
+    name: string;
+    price: number;
+}
+
+export default function ProductCard({name, price}: ProductCardProps) {
+
     return (
         <div className="Product-card">
             <div className="Product-box">
