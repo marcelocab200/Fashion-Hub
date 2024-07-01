@@ -8,7 +8,6 @@
   max-height: 100vh;
   max-width: 100vw;
   font-family: "Source Sans 3", sans-serif;
-
 }
 
 a {
@@ -192,11 +191,6 @@ footer {
   align-items: center;
   gap: 1rem;
 }
-
-/* .Social-media div a img {
-  width: 0.6rem;
-  height: 0.6rem;
-} */
 
 
 

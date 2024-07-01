@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import Api from './services/api';
+
 import "./App.css";
 
 import facebookIcon from "./images/Icon facebook square.png";
@@ -7,7 +10,29 @@ import instagramIcon from "./images/Icon instagram.png";
 
 import ProductCard from "./components/ProductCard/ProductCard";
 
+import { ProductCardProps } from './components/ProductCard/ProductCard';
+
+interface FilterProps {
+  category: string[];
+  color: string[];
+  priceRange: number[];
+}
+
 function App() {
+  const [products, setProducts] = useState<ProductCardProps[] | null>(null)
+
+  useEffect(() => {
+    // Faz a requisição da lista de produtos no MySQL por meio da API
+      (async () => {
+        try {
+          const response = await Api.get("products");
+          setProducts(response.data.result);
+        } catch (err: any) {
+          console.error("Erro ao carregar os produtos:", err);
+        }
+      })();
+  }, [])
+
   return (
     <div className="App">
       <header>
@@ -73,20 +98,32 @@ function App() {
             </div>
             <div className="Colors">
               <p>Cores</p>
-              <input
-                type="checkbox"
-                id="color1"
-                name="color1"
-                value="Vermelho"
-              />
-              <label>Vermelho</label>
-              <br />
-              <input type="checkbox" id="color2" name="color2" value="Azul" />
-              <label>Azul</label>
-              <br />
-              <input type="checkbox" id="color3" name="color3" value="Verde" />
-              <label>Verde</label>
-              <br />
+                { 
+                  // Pega a lista de cores únicas dos produtos
+                  products?.reduce<string[]>((acc, product) => {
+                    if (!acc.includes(product.color)) {
+                      acc.push(product.color);
+                    }
+
+                    return acc;
+                  },[])
+                  // Retorna o componente para cada cor
+                  .map((color, index) => {
+                      return (
+                        <div>
+                          <input
+                            type="checkbox"
+                            id={`color${index}`}
+                            name={`color${index}`}
+                            value={color}
+                          />
+                          <label>{color}</label>
+                          <br />
+                        </div>
+                      )
+                    })
+                    
+                }
             </div>
             <div className="Price-range">
               <p>Faixa de preço</p>
@@ -100,7 +137,14 @@ function App() {
           </form>
         </div>
         <div className="Products">
-          <ProductCard name={"Camiseta Supreme Salmão"} price={100} />
+          {
+            products !== null ? products?.map((product) => {
+              let {name, imgUrl, price, category, color} = product;
+
+              return (
+              <ProductCard name={name} imgUrl={imgUrl} price={price} category={category} color={color} />
+            )}) : <p>Carregando...</p>
+          }
         </div>
       </main>
       <footer>
