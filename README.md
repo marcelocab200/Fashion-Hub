@@ -3,6 +3,8 @@
 - Telas:
     - Catálogo de produtos
 
+![Tela de catálogo de produtos](./client/src/images/readmeImg.png)
+
 # Principais tecnologias utilizadas:
   - React
   - Typescript
