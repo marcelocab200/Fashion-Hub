@@ -10,16 +10,18 @@ import instagramIcon from "./images/Icon instagram.png";
 
 import ProductCard from "./components/ProductCard/ProductCard";
 
-import { ProductCardProps } from './components/ProductCard/ProductCard';
+import ProductCardProps from './types/ProductCardProps';
 
-interface FilterProps {
-  category: string[];
-  color: string[];
-  priceRange: number[];
-}
+import FilterProps from './types/FilterProps';
+
+import { useProducts } from './context/Products';
+
+import { Provider } from './context/Products';
+import FilterForm from './components/FilterForm/FilterForm';
 
 function App() {
-  const [products, setProducts] = useState<ProductCardProps[] | null>(null)
+  // const [products, setProducts] = useState<ProductCardProps[] | null>(null)
+  const { products, setProducts, filteredProducts, setFilteredProducts } = useProducts();
 
   useEffect(() => {
     // Faz a requisição da lista de produtos no MySQL por meio da API
@@ -48,101 +50,34 @@ function App() {
         </nav>
       </header>
       <main>
-        <div className="Filter-options">
-          <h2>Filtrar</h2>
-          <form>
-            <div className="Categories">
-              <p>Categorias</p>
-              <input
-                type="checkbox"
-                id="category1"
-                name="category1"
-                value="Masculino"
-              />
-              <label>Masculino</label>
-              <br />
-              <input
-                type="checkbox"
-                id="category2"
-                name="category2"
-                value="Feminino"
-              />
-              <label>Feminino</label>
-              <br />
-              <input
-                type="checkbox"
-                id="category3"
-                name="category3"
-                value="Infantil"
-              />
-              <label>Infantil</label>
-              <br />
-            </div>
-            <div className="Sizes">
-              <p>Tamanhos</p>
-              <input type="checkbox" id="size1" name="size1" value="PP" />
-              <label>PP</label>
-              <br />
-              <input type="checkbox" id="size2" name="size2" value="P" />
-              <label>P</label>
-              <br />
-              <input type="checkbox" id="size3" name="size3" value="M" />
-              <label>M</label>
-              <br />
-              <input type="checkbox" id="size4" name="size4" value="G" />
-              <label>G</label>
-              <br />
-              <input type="checkbox" id="size5" name="size5" value="GG" />
-              <label>GG</label>
-              <br />
-            </div>
-            <div className="Colors">
-              <p>Cores</p>
-                { 
-                  // Pega a lista de cores únicas dos produtos
-                  products?.reduce<string[]>((acc, product) => {
-                    if (!acc.includes(product.color)) {
-                      acc.push(product.color);
-                    }
-
-                    return acc;
-                  },[])
-                  // Retorna o componente para cada cor
-                  .map((color, index) => {
-                      return (
-                        <div>
-                          <input
-                            type="checkbox"
-                            id={`color${index}`}
-                            name={`color${index}`}
-                            value={color}
-                          />
-                          <label>{color}</label>
-                          <br />
-                        </div>
-                      )
-                    })
-                    
-                }
-            </div>
-            <div className="Price-range">
-              <p>Faixa de preço</p>
-              <div>
-                <p>R$0</p>
-                <p>R$1000</p>
-              </div>
-              <input type="range" min="0" max="1000" value="500" />
-            </div>
-            <input type="submit" name="Submit" value="Aplicar" />
-          </form>
-        </div>
+        <FilterForm/>
         <div className="Products">
           {
-            products !== null ? products?.map((product) => {
+            filteredProducts !== null ? filteredProducts?.map((product, index) => {
               let {name, imgUrl, price, category, color} = product;
 
               return (
-              <ProductCard name={name} imgUrl={imgUrl} price={price} category={category} color={color} />
+                <ProductCard 
+                  key={index} 
+                  name={name} 
+                  imgUrl={imgUrl} 
+                  price={price} 
+                  category={category} 
+                  color={color} 
+                />
+            )}) :
+            products !== null ? products?.map((product, index) => {
+              let {name, imgUrl, price, category, color} = product;
+
+              return (
+                <ProductCard 
+                  key={index} 
+                  name={name} 
+                  imgUrl={imgUrl} 
+                  price={price} 
+                  category={category} 
+                  color={color} 
+                />
             )}) : <p>Carregando...</p>
           }
         </div>

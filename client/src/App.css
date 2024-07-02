@@ -22,7 +22,7 @@ p {
 button {
   border: none;
   color: white;
-  border-radius: 10px;
+  border-radius: 24px;
   padding: 0.2rem;
   font-family: "Source Sans 3", sans-serif;
 }
@@ -31,6 +31,56 @@ button:hover {
   cursor: pointer;
 }
 
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 6px;
+  background: #ccc;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 15px;
+  width: 15px;
+  background-color: #A016F4;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #f50;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px #9f16f413
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px #9f16f42d
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px #9f16f42d
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(255,85,0, .1)
+}
+input[type="range"]:active::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+}
+input[type="range"]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(255,85,0, .2)    
+}
 
 
 header {
@@ -66,66 +116,7 @@ main {
   overflow: hidden;
 }
 
-.Filter-options {
-  background-color: #F8F8F8;
-  height: 100%;
-  min-width: 15rem;
-  width: 20%;
-  padding: 1rem;
 
-}
-
-.Filter-options h2 {
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-  font-size: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-
-.Filter-options form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.Filter-options form div p {
-  margin-bottom: 0.3rem;
-  font-size: 1rem;
-}
-
-.Filter-options form div input {
-  margin-right: 0.4rem;
-}
-
-.Filter-options form input[type="submit"] {
-  border: none;
-  color: white;
-  border-radius: 10px;
-  padding: 0.2rem;
-  font-family: "Source Sans 3", sans-serif;
-  background-color: #a0a0a0;
-}
-
-.Filter-options form input[type="submit"]:hover {
-  cursor: pointer;
-  background-color: #c0c0c0;
-}
-
-.Price-range div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0;
-}
-
-.Price-range input {
-  width: 100%;
-}
-
-.Price-range div p {
-  font-Size: 0.9rem;
-}
 
 .Products {
   flex: 1;

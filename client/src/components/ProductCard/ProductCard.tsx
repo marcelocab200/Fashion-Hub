@@ -1,13 +1,6 @@
 import './ProductCard.css'
 
-export interface ProductCardProps {
-    id?: number;
-    name: string;
-    price: number;
-    category: string;
-    imgUrl: string;
-    color: string;
-}
+import ProductCardProps from '../../types/ProductCardProps'
 
 export default function ProductCard({name, price, category, imgUrl, color}: ProductCardProps) {
 
