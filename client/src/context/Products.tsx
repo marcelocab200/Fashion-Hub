@@ -1,7 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react';
 
 import ProductCardProps from '../types/ProductCardProps';
-import FilterProps from '../types/FilterProps';
 
 interface ProductContextProps {
     products: ProductCardProps[] | null;

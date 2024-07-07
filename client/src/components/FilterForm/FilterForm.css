@@ -14,13 +14,21 @@
     font-size: 1.25rem;
     margin-bottom: 1.25rem;
   }
+
+
   
   .Filter-options form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
-  
+
+  .Categories, .Sizes, .Colors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  } 
+
   .Filter-options form div p {
     margin-bottom: 0.3rem;
     font-size: 1rem;
@@ -36,12 +44,16 @@
     border-radius: 24px;
     padding: 0.2rem;
     font-family: "Source Sans 3", sans-serif;
-    background-color: #a0a0a0;
+    background-color: var(--gray);
   }
   
   .Filter-options form button:hover {
     cursor: pointer;
-    background-color: #c0c0c0;
+    background-color: var(--light-gray);
+  }
+
+  .Check-input {
+    display: flex;
   }
   
   .Price-range div {
@@ -57,4 +69,20 @@
   
   .Price-range div p {
     font-Size: 0.9rem;
+  }
+
+  .Filter-options input[type="checkbox"] {
+    outline: 1px solid var(--gray);
+    border-radius: 4px;
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .Filter-options input[type="checkbox"]:hover {
+    outline: 1px solid var(--purple);
+  }
+
+  .Filter-options input[type="checkbox"]:checked {
+    outline: 1px solid var(--purple);
+    background-color: var(--purple);
   }

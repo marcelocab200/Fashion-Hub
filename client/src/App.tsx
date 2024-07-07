@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import Api from './services/api';
 
@@ -10,17 +10,12 @@ import instagramIcon from "./images/Icon instagram.png";
 
 import ProductCard from "./components/ProductCard/ProductCard";
 
-import ProductCardProps from './types/ProductCardProps';
-
-import FilterProps from './types/FilterProps';
-
 import { useProducts } from './context/Products';
 
-import { Provider } from './context/Products';
 import FilterForm from './components/FilterForm/FilterForm';
 
+
 function App() {
-  // const [products, setProducts] = useState<ProductCardProps[] | null>(null)
   const { products, setProducts, filteredProducts, setFilteredProducts } = useProducts();
 
   useEffect(() => {

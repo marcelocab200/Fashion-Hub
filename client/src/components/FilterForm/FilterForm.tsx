@@ -7,18 +7,22 @@ import FilterProps from '../../types/FilterProps';
 import { Slider } from '@mui/material';
 
 export default function FilterForm() {
-    const { products, setProducts, filteredProducts, setFilteredProducts } = useProducts();
+    const { products, filteredProducts, setFilteredProducts } = useProducts();
     const [rangeValue, setRangeValue] = useState([50, 600])
 
     function handleFilterData(filter: FilterProps) {
-        console.log(filter.price);
+        // console.log(filter.price);
+        console.log(products)
         if (products !== null) {
             if (filter.category.length > 0 || filter.color.length > 0) {
                 setFilteredProducts(products.filter((product) => 
                     (filter.price[0] < product.price && filter.price[1] > product.price) && // Aplica o filtro sobre os itens dentro da faixa de preço
-                    (filter.category.includes(product.category) || // Aplica o filtro sobre o item caso a categoria seja selecionada
-                    filter.category.length === 0 && filter.color.includes(product.color)) // Caso a cor seja selecionada porém a categoria selecionada não pertença ao produto, ele não aparece
-                ));
+                    (
+                      (filter.category.includes(product.category) && filter.color.length === 0) || // Filto para apenas as categorias selecionadas
+                      (filter.category.length === 0 && filter.color.includes(product.color)) || // Filtro para apenas as cores selecionadas
+                      (filter.category.includes(product.category) && filter.color.includes(product.color)) // Filtro para ambas as categorias e cores selecionadas
+                    )
+                  ));
             } else { // Caso nenhum filto esteja selecionado, aplica apenas sobre a faixa de preço
                 setFilteredProducts(products.filter((product) => 
                     (filter.price[0] < product.price && filter.price[1] > product.price)
@@ -38,7 +42,7 @@ export default function FilterForm() {
             price: rangeValue
         }
         
-        console.log(payload);
+        console.log(Object.fromEntries(formData.entries()));
         handleFilterData(payload);
     }
 
@@ -56,48 +60,56 @@ export default function FilterForm() {
           <form onSubmit={handleSubmitForm}>
             <div className="Categories">
               <p>Categorias</p>
-              <input
-                type="checkbox"
-                id="category1"
-                name="category"
-                value="Masculino"
-              />
-              <label>Masculino</label>
-              <br />
-              <input
-                type="checkbox"
-                id="category2"
-                name="category"
-                value="Feminino"
-              />
-              <label>Feminino</label>
-              <br />
-              <input
-                type="checkbox"
-                id="category3"
-                name="category"
-                value="Infantil"
-              />
-              <label>Infantil</label>
-              <br />
+              <div className="Check-input">
+                <input
+                  type="checkbox"
+                  id="category1"
+                  name="category"
+                  value="Masculino"
+                />
+                <label>Masculino</label>
+              </div>
+              <div className="Check-input">
+                <input
+                  type="checkbox"
+                  id="category2"
+                  name="category"
+                  value="Feminino"
+                />
+                <label>Feminino</label>
+              </div>
+              <div className="Check-input">
+                <input
+                  type="checkbox"
+                  id="category3"
+                  name="category"
+                  value="Infantil"
+                />
+                <label>Infantil</label>
+              </div>
             </div>
             <div className="Sizes">
               <p>Tamanhos</p>
+              <div className="Check-input">
               <input type="checkbox" id="size1" name="size" value="PP" />
               <label>PP</label>
-              <br />
+              </div>
+              <div className="Check-input">
               <input type="checkbox" id="size2" name="size" value="P" />
               <label>P</label>
-              <br />
+              </div>
+              <div className="Check-input">
               <input type="checkbox" id="size3" name="size" value="M" />
               <label>M</label>
-              <br />
+              </div>
+              <div className="Check-input">
               <input type="checkbox" id="size4" name="size" value="G" />
               <label>G</label>
-              <br />
+              </div>
+              <div className="Check-input">
               <input type="checkbox" id="size5" name="size" value="GG" />
               <label>GG</label>
-              <br />
+              </div>
             </div>
             <div className="Colors">
               <p>Cores</p>
@@ -113,7 +125,7 @@ export default function FilterForm() {
                   // Retorna o componente para cada cor
                   .map((color, index) => {
                       return (
-                        <div key={index}>
+                        <div key={index} className="Check-input">
                           <input
                             type="checkbox"
                             id={`color${index}`}

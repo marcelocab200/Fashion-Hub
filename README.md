@@ -12,14 +12,12 @@
   - MySQL
   - Axios
 
-# Como instalar
-- Crie o arquivo .env
+# Como instalar e iniciar
+- Crie o arquivo .env nas pastas "client" e "server"
 
-`touch env`
+- Adicione as variáveis de ambiente no arquivo .env de acordo com o arquivo example.env
 
-- Adicione as variáveis de ambiente de acordo com o arquivo example.env
-
-- No MySQL, crie um Schema com o mesmo nome da variável que configurou em DB_NAME na .env
+- No MySQL, crie um Schema com o mesmo nome da variável que configurou em DB_NAME nas .env
     - Crie uma Table com o nome "products" e as colunas "id, name, price, color, category, imgUrl"
 
 - No diretório principal, execute os seguintes comandos em ordem:

@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/server.ts"
+    "start": "nodemon -r dotenv/config ./src/server.ts"
   },
   "keywords": [],
   "author": "",

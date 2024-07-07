@@ -19,13 +19,13 @@
 }
 
 .Product-card button {
-    background-color: #A016F4;
+    background-color: var(--purple);
     width: 100%;
     margin-top: 0.5rem;
 }
 
 .Product-card button:hover {
-    background-color: #6f0dac;
+    background-color: var(--dark-purple);
 }
 
 .Product-image {
