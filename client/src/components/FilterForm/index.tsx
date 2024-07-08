@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useProducts } from '../../context/Products';
-import './FilterForm.css'
+import styles from './styles.module.scss'
 
 import FilterProps from '../../types/FilterProps';
 
@@ -55,12 +55,12 @@ export default function FilterForm() {
     };
 
     return (
-        <div className="Filter-options">
+        <div className={styles["Filter-options"]}>
           <h2>Filtrar</h2>
           <form onSubmit={handleSubmitForm}>
-            <div className="Categories">
+            <div className={styles["Categories"]}>
               <p>Categorias</p>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
                 <input
                   type="checkbox"
                   id="category1"
@@ -69,7 +69,7 @@ export default function FilterForm() {
                 />
                 <label>Masculino</label>
               </div>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
                 <input
                   type="checkbox"
                   id="category2"
@@ -78,7 +78,7 @@ export default function FilterForm() {
                 />
                 <label>Feminino</label>
               </div>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
                 <input
                   type="checkbox"
                   id="category3"
@@ -88,30 +88,30 @@ export default function FilterForm() {
                 <label>Infantil</label>
               </div>
             </div>
-            <div className="Sizes">
+            <div className={styles["Sizes"]}>
               <p>Tamanhos</p>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
               <input type="checkbox" id="size1" name="size" value="PP" />
               <label>PP</label>
               </div>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
               <input type="checkbox" id="size2" name="size" value="P" />
               <label>P</label>
               </div>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
               <input type="checkbox" id="size3" name="size" value="M" />
               <label>M</label>
               </div>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
               <input type="checkbox" id="size4" name="size" value="G" />
               <label>G</label>
               </div>
-              <div className="Check-input">
+              <div className={styles["Check-input"]}>
               <input type="checkbox" id="size5" name="size" value="GG" />
               <label>GG</label>
               </div>
             </div>
-            <div className="Colors">
+            <div className={styles["Colors"]}>
               <p>Cores</p>
                 { 
                   // Pega a lista de cores únicas dos produtos
@@ -125,7 +125,7 @@ export default function FilterForm() {
                   // Retorna o componente para cada cor
                   .map((color, index) => {
                       return (
-                        <div key={index} className="Check-input">
+                        <div key={index} className={styles["Check-input"]}>
                           <input
                             type="checkbox"
                             id={`color${index}`}
@@ -140,7 +140,7 @@ export default function FilterForm() {
                     
                 }
             </div>
-            <div className="Price-range">
+            <div className={styles["Price-range"]}>
               <p>Faixa de preço</p>
               <div>
                 <p>R$0</p>
@@ -152,7 +152,7 @@ export default function FilterForm() {
                 size="small"
                 max={1000}
                 defaultValue={600}
-                aria-label="Default"
+                // aria-label="Default"
                 valueLabelDisplay="auto"
                 name="price"
                 slotProps={{rail: {style: {backgroundColor: "#8C8C8C"}}}}

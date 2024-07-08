@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
 
-import Api from './services/api';
+import Api from '../../services/api';
 
-import "./App.css";
+import styles from "./index.module.scss";
 
-import facebookIcon from "./images/Icon facebook square.png";
-import twitterIcon from "./images/Icon twitter.png";
-import instagramIcon from "./images/Icon instagram.png";
+import facebookIcon from "../../../public/Icon facebook square.png";
+import twitterIcon from "../../../public/Icon twitter.png";
+import instagramIcon from "../../../public/Icon instagram.png";
 
-import ProductCard from "./components/ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard";
+import FilterForm from '../../components/FilterForm';
 
-import { useProducts } from './context/Products';
-
-import FilterForm from './components/FilterForm/FilterForm';
+import { useProducts } from '../../context/Products';
 
 
-function App() {
-  const { products, setProducts, filteredProducts, setFilteredProducts } = useProducts();
+
+function ProductCatalog() {
+  const { products, setProducts, filteredProducts } = useProducts();
 
   useEffect(() => {
     // Faz a requisição da lista de produtos no MySQL por meio da API
@@ -31,9 +31,9 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className={styles["Product-Catalog"]}>
       <header>
-        <a href="" className="Logo">
+        <a href="" className={styles["Logo"]}>
           Fashion Hub
         </a>
         <nav>
@@ -46,7 +46,7 @@ function App() {
       </header>
       <main>
         <FilterForm/>
-        <div className="Products">
+        <div className={styles["Products"]}>
           {
             filteredProducts !== null ? filteredProducts?.map((product, index) => {
               let {name, imgUrl, price, category, color} = product;
@@ -78,21 +78,21 @@ function App() {
         </div>
       </main>
       <footer>
-        <div className="Rights-section">
+        <div className={styles["Rights-section"]}>
           <p>Fashion Hub</p>
           <p id="Copyright">@ 2023 Fashion Hub. Todos direitos reservados</p>
         </div>
-        <div className="Social-media">
+        <div className={styles["Social-media"]}>
           <p>Siga a gente</p>
           <div>
             <a href="">
-              <img src={facebookIcon} alt="Facebook" />
+              <img src={facebookIcon.src} alt="Facebook" />
             </a>
             <a href="">
-              <img src={twitterIcon} alt="Twitter" />
+              <img src={twitterIcon.src} alt="Twitter" />
             </a>
             <a href="">
-              <img src={instagramIcon} alt="Instagram" />
+              <img src={instagramIcon.src} alt="Instagram" />
             </a>
           </div>
         </div>
@@ -101,4 +101,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProductCatalog;

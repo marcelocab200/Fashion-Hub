@@ -3,9 +3,10 @@
 - Telas:
     - Catálogo de produtos
 
-![Tela de catálogo de produtos](./client/src/images/readmeImg.png)
+![Tela de catálogo de produtos](./client/public/readmeImg.png)
 
 # Principais tecnologias utilizadas:
+  - Next.js
   - React
   - Typescript
   - Node.js / Express
