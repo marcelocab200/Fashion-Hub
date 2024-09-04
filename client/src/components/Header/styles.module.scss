@@ -1,0 +1,24 @@
+.Header {
+  min-height: 2rem;
+  height: 6%;
+  padding-inline: 1rem;
+  background-color: var(--purple);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    color: white;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .Header-logo {
+    font-size: 1.25rem;
+  }
+}

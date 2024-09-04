@@ -1,6 +1,7 @@
-import styles from './styles.module.scss'
+import styles from './index.module.scss'
 
 import ProductCardProps from '../../types/ProductCardProps'
+import Button from '../Button'
 
 export default function ProductCard({name, price, category, imgUrl, color}: ProductCardProps) {
 
@@ -10,7 +11,7 @@ export default function ProductCard({name, price, category, imgUrl, color}: Prod
             <div className={styles["Product-image"]} style={{backgroundImage: `url(${imgUrl})`}}/>
             <p>{name}</p>
             <p>R${price}</p>
-            <button type="button">Adicionar ao carrinho</button>
+            <Button>Adicionar ao carrinho</Button>
             </div>
         </div>
     )

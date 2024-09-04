@@ -4,15 +4,14 @@ import Api from '../../services/api';
 
 import styles from "./index.module.scss";
 
-import facebookIcon from "../../../public/Icon facebook square.png";
-import twitterIcon from "../../../public/Icon twitter.png";
-import instagramIcon from "../../../public/Icon instagram.png";
-
-import ProductCard from "../../components/ProductCard";
-import FilterForm from '../../components/FilterForm';
+import ProductCard from "src/components/ProductCard";
+import FilterForm from 'src/components/FilterForm';
+import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 
 import { useProducts } from '../../context/Products';
 
+import { CircularProgress } from '@mui/material';
 
 
 function ProductCatalog() {
@@ -32,19 +31,10 @@ function ProductCatalog() {
 
   return (
     <div className={styles["Product-Catalog"]}>
-      <header>
-        <a href="" className={styles["Logo"]}>
-          Fashion Hub
-        </a>
-        <nav>
-          <ul>
-            <a href="">Início</a>
-            <a href="">Loja</a>
-            <a href="">Contatos</a>
-          </ul>
-        </nav>
-      </header>
-      <main>
+      <Header/>
+      {
+        products === null ? <div className={styles["Loading"]}> <CircularProgress style={{color: "#a016f4"}}/> </div>:
+        (<main>
         <FilterForm/>
         <div className={styles["Products"]}>
           {
@@ -76,27 +66,9 @@ function ProductCatalog() {
             )}) : <p>Carregando...</p>
           }
         </div>
-      </main>
-      <footer>
-        <div className={styles["Rights-section"]}>
-          <p>Fashion Hub</p>
-          <p id="Copyright">@ 2023 Fashion Hub. Todos direitos reservados</p>
-        </div>
-        <div className={styles["Social-media"]}>
-          <p>Siga a gente</p>
-          <div>
-            <a href="">
-              <img src={facebookIcon.src} alt="Facebook" />
-            </a>
-            <a href="">
-              <img src={twitterIcon.src} alt="Twitter" />
-            </a>
-            <a href="">
-              <img src={instagramIcon.src} alt="Instagram" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      </main>)      
+      }
+      <Footer/>
     </div>
   );
 }

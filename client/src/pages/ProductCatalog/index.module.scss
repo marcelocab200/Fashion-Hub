@@ -27,25 +27,11 @@
     }
   }
 
-  header {
-    min-height: 2rem;
-    height: 6%;
-    padding-inline: 1rem;
-    background-color: var(--purple);
+  .Loading {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex: 1;
+    justify-content: center;
     align-items: center;
-
-    a {
-      color: white;
-    }
-
-    nav ul {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-    }
   }
 
   main {
@@ -54,21 +40,6 @@
     flex-direction: row;
     overflow: hidden;
   }
-
-  footer {
-    min-height: 2.5rem;
-    height: 8%;
-    padding-inline: 1rem;
-    background-color: var(--purple);
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.Logo {
-  font-size: 1.25rem;
 }
 
 .Products {
@@ -81,46 +52,6 @@
   padding: 2rem;
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-.Rights-section {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  p {
-    margin: 0;
-    padding: 0;
-  }
-
-  #Copyright {
-    font-size: 0.75rem;
-  }
-}
-
-.Social-media {
-  width: 8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-
-  p {
-    margin: 0.2rem 0;
-    padding: 0;
-  }
-
-  div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
 }
 
 @media (max-width: 720px) {
