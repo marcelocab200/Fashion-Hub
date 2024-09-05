@@ -1,10 +1,19 @@
 import db from "../db";
 
-import { Product } from "../controllers/ProductController";
+import { ProductProps } from "../controllers/ProductController";
 
-async function getProducts() {
-    return new Promise<Product[]>((resolve, reject) => {
-        db.query('SELECT * FROM products', (error, results) => {
+async function getProductCatalog() {
+    return new Promise<ProductProps[]>((resolve, reject) => {
+        db.query('SELECT id, name, price, category, imgUrl, color, sizes FROM products', (error, results) => {
+            if (error) reject(error);
+            resolve(results);
+        })
+    })
+}
+
+async function getProduct(name: string) {
+    return new Promise<ProductProps[]>((resolve, reject) => {
+        db.query('SELECT id, name, price, category, imgUrl, color, description, sizes FROM products WHERE name = ?', [name], (error, results) => {
             if (error) reject(error);
             resolve(results);
         })
@@ -12,7 +21,8 @@ async function getProducts() {
 }
 
 const ProductService = {
-    getProducts
+    getProductCatalog,
+    getProduct
 }
 
 export default ProductService;

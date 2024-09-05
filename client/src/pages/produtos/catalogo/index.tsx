@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import Api from "../../services/api";
+import Api from "../../../services/api";
 
 import styles from "./index.module.scss";
 
@@ -9,14 +9,14 @@ import FilterForm from "src/components/FilterForm";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 
-import { useProducts } from "../../context/Products";
+import { useProducts } from "../../../context/Products";
 
 import { CircularProgress } from "@mui/material";
 
 export async function getServerSideProps() {
   // Faz a requisição da lista de produtos no MySQL por meio da API
   try {
-    const response = await Api.get("products");
+    const response = await Api.get("productCatalog");
     const data = response.data.result;
 
     return {
