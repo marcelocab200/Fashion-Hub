@@ -1,0 +1,202 @@
+.Home {
+  max-width: 100vw;
+
+  p {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  button {
+    height: 3rem;
+    font-weight: 500;
+  }
+
+  #Black-button {
+    background-color: black;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  main {
+    
+  padding: 5rem 10rem 15rem;
+  }
+
+  .Nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+
+    p {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    nav ul {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      width: 100%;
+
+      button {
+        width: 8rem;
+      }
+    }
+  }
+
+  .Home-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10rem;
+    padding-inline: 1rem;
+
+    p {
+      align-self: center;
+      text-align: center;
+      vertical-align: center;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    div div {
+      display: flex;
+      flex-direction: row;
+      margin-top: 1rem;
+
+      input {
+        width: 100%;
+        margin-right: 2rem;
+      }
+
+      button {
+        width: 15rem;
+      }
+    }
+  }
+
+  .Main-content {
+    
+    p {
+        font-size: 1.25rem;
+        font-weight: 700
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .Item, .Content{
+
+        .Title-text {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .Description-text {
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+    }
+
+    .Steps-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .Content {
+        display: flex;
+        flex-direction: row;
+
+        .Item {
+            padding-inline: 5rem;
+            padding-block: 3rem;
+            padding: 3rem 5rem 6rem;
+            width: calc(100% / 3);
+            display: flex;
+            flex-direction: column;
+
+            .Title-text {
+              margin-bottom: 1.5rem;
+            }
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+
+            &:not(:last-child) { /* Adiciona borda apenas entre os elementos */
+                border-right: 2px var(--dark-gray) solid;
+              }
+        }
+        
+
+      }
+    }
+
+    .Community-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .Content {
+            display: flex;
+            flex-direction: column;
+
+            .Item {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 4rem 8rem;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    width: 30%;
+                }
+
+                &:not(:last-child) { /* Adiciona borda apenas entre os elementos */
+                    border-bottom: 2px var(--dark-gray) solid;
+                  }
+            }
+        }
+    }
+
+    .Download-wrapper {
+
+      .Content {
+        display: flex;
+        flex-direction: space-between;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 2rem 4rem 0rem;
+        border-bottom: 2px var(--dark-gray) solid;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          width: 30%;
+          gap: 1.5rem;
+
+          button {
+            width: 12rem;
+          }
+        }
+        
+        img {
+          padding-right: 12rem;
+        }
+      }
+    }
+  }
+}

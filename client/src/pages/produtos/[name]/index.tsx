@@ -55,7 +55,7 @@ export default function ProductDetails(
                         {product.sizes.split(',').map(size => <Button>{size}</Button>)}
                         </div>
                     <Button>Adicionar ao carrinho</Button>
-                    <p onClick={() => Router.push('/ProductCatalog')} >Voltar ao catálogo</p>
+                    <a onClick={() => Router.push('/produtos/catalogo')} >Voltar ao catálogo</a>
                 </div>
             </main>
             <Footer />

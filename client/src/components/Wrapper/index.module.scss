@@ -1,0 +1,17 @@
+.Wrapper-title {
+  cursor: pointer;
+  border-block: 2px var(--dark-gray) solid;
+  padding-block: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+    p {
+        font-size: 1.75rem !important;
+    }
+    
+  img {
+    object-fit: contain;
+  }
+}

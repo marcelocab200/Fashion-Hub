@@ -1,0 +1,50 @@
+.Short-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--purple);
+  height: 12rem;
+  padding-inline: 5rem;
+
+  p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: white;
+  }
+
+  .Company-info {
+    #Company-name {
+      font-size: 1.5rem;
+    }
+
+    .Social-media {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  .Contact-info {
+    #Contact-text {
+      font-size: 1rem;
+      margin-top: 0.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #Email,
+    #Phone {
+      p {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+    }
+  }
+}

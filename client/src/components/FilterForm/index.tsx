@@ -5,14 +5,13 @@ import styles from './styles.module.scss'
 import FilterProps from '../../types/FilterProps';
 
 import { Slider } from '@mui/material';
+import Button from '../Button';
 
 export default function FilterForm() {
     const { products, filteredProducts, setFilteredProducts } = useProducts();
     const [rangeValue, setRangeValue] = useState([50, 600])
 
     function handleFilterData(filter: FilterProps) {
-        // console.log(filter.price);
-        console.log(products)
         if (products !== null) {
             if (filter.category.length > 0 || filter.color.length > 0) {
                 setFilteredProducts(products.filter((product) => 
@@ -56,7 +55,10 @@ export default function FilterForm() {
 
     return (
         <div className={styles["Filter-options"]}>
+          <div className={styles["Top-section"]}>
           <h2>Filtrar</h2>
+          {filteredProducts !== null && <Button type="reset" onClick={handleResetForm}>Limpar filtros</Button>}
+          </div>
           <form onSubmit={handleSubmitForm}>
             <div className={styles["Categories"]}>
               <p>Categorias</p>
@@ -160,7 +162,6 @@ export default function FilterForm() {
                 />
             </div>
             <button type="submit" value="Submit">Aplicar</button>
-            {filteredProducts !== null && <button type="reset" onClick={handleResetForm}>Limpar</button>}
           </form>
         </div>
     )
